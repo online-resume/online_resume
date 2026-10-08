@@ -451,13 +451,6 @@ export const resume = {
    "org": "University of north texas · Danton, TX",
    "note": "May 2023 · GPA 3.8/4.0",
    "url": ""
-  },
-  {
-   "tag": "Education",
-   "name": "Bachelor of Science in Mathematics, Statistics & Computer Science",
-   "org": "Loyola Academy Degree & PG College · Alwal, TG",
-   "note": "",
-   "url": ""
   }
  ],
  "tools": [
