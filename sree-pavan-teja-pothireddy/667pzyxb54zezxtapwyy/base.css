@@ -1,0 +1,28 @@
+/* The few rules every design starts from. Each design's own <style> follows
+   this file and decides everything about how it looks. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.skip { position: absolute; left: 1rem; top: -5rem; z-index: 999; padding: 0.6rem 1rem; background: #000; color: #fff; }
+.skip:focus { top: 1rem; }
+
+/* Entrance on scroll. It is an animation, not a transition, so a design's
+   hover transitions on the same element are left alone. A design changes the
+   movement by giving ".rv.in" another animation-name. */
+.rv { opacity: 0; }
+.rv.in { opacity: 1; animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+
+.foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1.5rem clamp(1rem, 4vw, 3rem); font-size: 0.85rem; opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+  .rv { opacity: 1; }
+}
