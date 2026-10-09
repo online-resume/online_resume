@@ -1,22 +1,110 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Professional profile of Sree Pavan Teja Pothireddy">
-<meta property="og:title" content="Sree Pavan Teja Pothireddy">
-<meta property="og:description" content="Professional profile of Sree Pavan Teja Pothireddy">
-<meta property="og:type" content="profile">
-<title>Sree Pavan Teja Pothireddy</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sree Pavan Teja Pothireddy</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Professional profile of Sree Pavan Teja Pothireddy">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./base.css">
+  <style>
+    /* Product design: laid out like a software company's home page. What I do,
+       the results, where I have done it, then the details. */
+    :root { --bg: #fff; --ink: #0f172a; --dim: #55607a; --line: #e5e8f0; --tint: #f6f7fb; --brand: #4338ca; --brand-2: #0ea5e9; --soft: #eef0ff; --ok: #059669; }
+    body { background: var(--bg); color: var(--ink); font: 400 clamp(1rem, 0.96rem + 0.2vw, 1.1rem)/1.6 "Figtree", system-ui, sans-serif; }
+    .wrap { width: min(1160px, 100% - 2rem); margin-inline: auto; }
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 8px; }
+
+    nav { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; } nav.stuck { border-color: var(--line); }
+    nav .wrap { display: flex; align-items: center; gap: 2rem; min-height: 64px; } nav b { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; letter-spacing: -0.02em; } nav b::before { content: ""; width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+    nav div { display: flex; gap: 1.6rem; margin-right: auto; } nav div a { text-decoration: none; color: var(--dim); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; } nav div a:hover { color: var(--ink); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 1.3rem; border-radius: 10px; font-weight: 700; text-decoration: none; background: var(--brand); color: #fff; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s; white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(67, 56, 202, 0.32); } .btn.alt { background: #fff; color: var(--ink); border: 1px solid var(--line); } .btn.alt:hover { box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); } .btn.sm { min-height: 40px; padding: 0 1rem; font-size: 0.92rem; }
+
+    .hero { position: relative; text-align: center; padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4rem); overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: -40% -10% auto; height: 120%; z-index: -1; background: radial-gradient(45% 55% at 30% 40%, rgba(67, 56, 202, 0.14), transparent 70%), radial-gradient(40% 50% at 72% 30%, rgba(14, 165, 233, 0.14), transparent 70%); animation: sway 14s ease-in-out infinite alternate; } @keyframes sway { to { transform: translateX(4%) scale(1.06); } }
+    .pill { display: inline-flex; gap: 0.5rem; align-items: center; padding: 0.3rem 0.9rem; border-radius: 999px; background: var(--soft); color: var(--brand); font-weight: 600; font-size: 0.88rem; margin-bottom: 1.4rem; } .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+    h1 { font-weight: 800; font-size: clamp(2.4rem, 1.2rem + 5.4vw, 5rem); line-height: 1.03; letter-spacing: -0.045em; text-wrap: balance; max-width: 16ch; margin-inline: auto; } h1 em { font-style: normal; background: linear-gradient(100deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero > .wrap > p.sub { max-width: 58ch; margin: 1.4rem auto 0; color: var(--dim); font-size: 1.12em; } .cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* The pipeline shown as a product screenshot */
+    .shot { margin: clamp(2.5rem, 5vw, 4rem) auto 0; max-width: 960px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12); text-align: left; overflow: hidden; }
+    .shot__bar { display: flex; gap: 6px; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); background: var(--tint); } .shot__bar i { width: 10px; height: 10px; border-radius: 50%; background: #d5d9e3; }
+    .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; padding: 1.25rem; } .flow li { position: relative; padding: 0.9rem; border-radius: 12px; background: var(--tint); border: 1px solid var(--line); animation: glow 6s ease-in-out infinite; animation-delay: calc(var(--n) * 1.2s); }
+    .flow b { display: block; font-weight: 700; } .flow span { font-size: 0.86rem; color: var(--dim); line-height: 1.35; display: block; margin-top: 0.2rem; } .flow small { font-size: 0.72rem; font-weight: 700; color: var(--brand); letter-spacing: 0.08em; }
+    @keyframes glow { 0%, 20%, 100% { border-color: var(--line); box-shadow: none; background: var(--tint); } 8% { border-color: var(--brand); box-shadow: 0 8px 22px rgba(67, 56, 202, 0.2); background: #fff; } }
+
+    .logos { text-align: center; padding: clamp(2.5rem, 5vw, 4rem) 0 0; } .logos p { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+    .logos ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem 2.6rem; margin-top: 1.1rem; } .logos li { font-weight: 800; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.45rem); letter-spacing: -0.02em; color: #9aa3b8; transition: color 0.25s, transform 0.25s; } .logos li:hover { color: var(--ink); transform: translateY(-2px); }
+
+    section { padding-top: clamp(4rem, 9vw, 7.5rem); } .center { text-align: center; }
+    .eyebrow { font-size: 0.84rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.7rem; }
+    h2 { font-weight: 800; font-size: clamp(1.9rem, 1.3rem + 2.8vw, 3.2rem); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); } .center h2 { max-width: 20ch; margin-inline: auto; }
+    h3 { font-weight: 700; font-size: 1.15rem; line-height: 1.3; letter-spacing: -0.01em; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; } .stat { padding: 1.5rem; border-radius: 16px; background: var(--tint); text-align: left; } .stat__n { font-weight: 800; font-size: clamp(2.2rem, 1.5rem + 2.6vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; background: linear-gradient(120deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; } .stat__l { margin-top: 0.6rem; font-size: 0.9rem; color: var(--dim); line-height: 1.4; }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4.5rem); align-items: start; } .split p + p { margin-top: 0.9rem; color: var(--dim); } .split h2 { margin-bottom: 1rem; }
+    dl { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; } dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--line); } dl div:last-child { border: 0; } dt { color: var(--dim); } dd { font-weight: 600; text-align: right; }
+
+    .feat { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; } .proj { grid-column: span 2; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; display: flex; flex-direction: column; gap: 0.6rem; background: #fff; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s, border-color 0.3s; } .proj:nth-child(n + 4) { grid-column: span 3; }
+    .proj:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(15, 23, 42, 0.1); border-color: #c9cdf7; }
+    .proj__no { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); color: var(--brand); font-weight: 800; font-size: 0.9rem; } .proj__about { color: var(--dim); } .proj__out { font-size: 0.92rem; font-weight: 500; padding-left: 1.5rem; position: relative; } .proj__out::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 800; } .proj .chips { margin-top: auto; padding-top: 0.4rem; }
+    .chips li { font-size: 0.8rem; font-weight: 500; padding: 0.15rem 0.65rem; border-radius: 999px; background: var(--tint); color: #3a4560; } .chips .core { background: var(--soft); color: var(--brand); font-weight: 700; }
+    .job { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem; padding: 1.75rem 0; border-top: 1px solid var(--line); } .job__when { font-weight: 700; } .job__place { color: var(--dim); font-size: 0.92rem; }
+    .job__co { color: var(--brand); } .job__co::before { content: "at "; color: var(--dim); font-weight: 400; } .job__sum { color: var(--dim); margin-top: 0.3rem; } .job__pts { margin: 1rem 0 1.1rem; display: grid; gap: 0.5rem; } .job__pts li { padding-left: 1.6rem; position: relative; } .job__pts li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 800; }
+    .sks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; } .sk { padding: 1.25rem; border-radius: 16px; background: var(--tint); } .sk h3 { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.7rem; } .sk .chips li { background: #fff; }
+    .creds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; } .cred { padding: 1.4rem; border: 1px solid var(--line); border-radius: 16px; } .cred:nth-child(n + 4) { grid-column: span 1; } .cred__tag { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); } .cred h3 { margin: 0.5rem 0 0.25rem; } .cred__org { color: var(--dim); font-size: 0.92rem; } .cred__note { margin-top: 0.6rem; font-size: 0.86rem; font-weight: 600; }
+    .band { margin-top: clamp(4rem, 9vw, 7.5rem); padding: clamp(3rem, 7vw, 5.5rem) 0; background: linear-gradient(120deg, #1e1b4b, var(--brand) 60%, #0369a1); color: #fff; text-align: center; } .band h2 { max-width: 18ch; margin-inline: auto; } .band .eyebrow { color: #c7d2fe; }
+    .cts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: left; } .ct { text-decoration: none; padding: 1.3rem; border-radius: 14px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22); transition: background 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ct:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-4px); } .ct span { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c7d2fe; margin-bottom: 0.3rem; } .ct strong { font-size: 1.1rem; overflow-wrap: anywhere; }
+
+    @media (max-width: 900px) {
+      nav div { display: none; } nav b { margin-right: auto; } .flow { grid-template-columns: 1fr; } .stats, .sks { grid-template-columns: repeat(2, 1fr); } .split, .job, .creds, .cts { grid-template-columns: 1fr; } .job { gap: 0.5rem; } .job__head { display: flex; gap: 0.8rem; align-items: baseline; } .proj:nth-child(n) { grid-column: span 6; }
+    }
+    @media (max-width: 520px) { .sks { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-<div class="page">
-<header class="top"><h1>Sree Pavan Teja Pothireddy</h1><p class="tagline">Data Engineer · 8+ years of experience</p><ul class="contact"><li><span>Email</span><a href="mailto:pavanteja.career@gmail.com">pavanteja.career@gmail.com</a></li><li><span>Phone</span><a href="tel:9403318286">(940) 331-8286</a></li><li><span>Location</span>Dallas, TX</li></ul></header>
-<nav class="jump" aria-label="Sections"><a href="#summary">Summary</a><a href="#skills">Skills &amp; tools</a><a href="#experience">Experience</a><a href="#certifications">Certifications</a><a href="#education">Education</a></nav>
-<main><section id="summary"><h2>Summary</h2><p class="about">Data Engineer with 8+ years of experience building and supporting cloud data solutions with Databricks, Snowflake, IICS, DBT, SQL Server, and AWS. Develops end-to-end ETL/ELT pipelines, lakehouses, warehouses, and scalable data models for enterprise reporting, analytics, finance, lending, risk, and healthcare use cases.</p></section><section id="skills"><h2>Skills &amp; tools</h2><div class="skill-row"><h3>Cloud Services</h3><ul class="chips"><li>Microsoft Azure (Azure SQL Database, Azure Data Lake Storage Gen2, Azure Data Factory, Azure Databricks)</li><li>AWS (S3, Lambda)</li><li>Snowflake</li></ul></div><div class="skill-row"><h3>Data Engineering Tools</h3><ul class="chips"><li>Azure Databricks</li><li>Apache Spark</li><li>Azure Data Factory</li><li>Delta Lake</li><li>Databricks Workflows</li><li>dbt</li></ul></div><div class="skill-row"><h3>RDBMS</h3><ul class="chips"><li>SQL Server</li><li>Azure SQL Database</li><li>Snowflake</li><li>Oracle</li><li>MySQL</li></ul></div><div class="skill-row"><h3>Programming Languages</h3><ul class="chips"><li>T-SQL</li><li>SQL</li><li>Python</li><li>PySpark</li><li>Spark SQL</li><li>PL/SQL</li><li>Pandas</li><li>Unix Shell Scripting</li><li>Python (PySpark, Pandas, Automation)</li><li>Unix Shell scripting</li></ul></div><div class="skill-row"><h3>Databricks &amp; Spark</h3><ul class="chips"><li>Azure Databricks</li><li>Apache Spark</li><li>PySpark</li><li>Spark SQL</li><li>Delta Lake</li><li>Auto Loader</li><li>Delta MERGE</li><li>Databricks Workflows</li><li>Databricks Notebooks</li><li>OPTIMIZE</li><li>VACUUM</li><li>Time Travel</li><li>Schema Evolution</li></ul></div><div class="skill-row"><h3>Version Control</h3><ul class="chips"><li>GitHub</li><li>Bitbucket</li><li>Azure DevOps</li></ul></div><div class="skill-row"><h3>Visualization &amp; BI</h3><ul class="chips"><li>Tableau</li><li>Power BI</li><li>Streamlit</li></ul></div><div class="skill-row"><h3>Architectures &amp; Practices</h3><ul class="chips"><li>Medallion Architecture</li><li>Lakehouse Architecture</li><li>Data Mesh</li><li>Dimensional Modeling (Star &amp; Snowflake schemas)</li><li>OLTP/OLAP</li><li>SCD Type 1 &amp; 2</li><li>Data Governance</li><li>RBAC</li><li>Compliance</li></ul></div></section><section id="experience"><h2>Experience</h2><article class="job"><div class="job-head"><h3>Data engineer</h3><span class="when">Aug 2023 - present</span></div><p class="where">Comerica Bank · Frisco, TX</p><p class="project">Contributed to data engineering efforts on banking datasets including AFS Vision, Treasury, Commercial Loans, and Consumer Loans, using Azure Data Factory to orchestrate Databricks data pipelines and models for enterprise reporting and risk analytics.</p><ul><li>Built a Bronze/Silver/Gold lakehouse with Azure Databricks, Delta Lake, PySpark, and Azure Data Factory for trusted banking, finance, credit-risk, and lending datasets.</li><li>Migrated SQL Server/T-SQL workloads to Databricks PySpark, enabling larger dataset processing and reducing database load.</li><li>Replaced full loads with Auto Loader and Delta MERGE incremental processing, reducing processing effort across banking pipelines.</li><li>Created metadata-driven pipelines, automated data-quality checks, exception datasets, operational logging, and Git-based CI/CD across Dev, QA, and Prod.</li></ul><h4>Tools</h4><ul class="chips"><li>Azure Databricks</li><li>Delta Lake</li><li>Databricks Auto Loader</li><li>Databricks Workflows</li><li>PySpark</li><li>Spark SQL</li><li>Azure Data Factory (ADF)</li><li>Azure Data Lake Storage (ADLS)</li><li>Azure SQL Database</li><li>SQL Server</li><li>T-SQL</li><li>JDBC</li><li>Git</li><li>CI/CD. Source systems included AFS Vision</li><li>Treasury</li><li>and Commercial and Consumer Loans.</li></ul></article><article class="job"><div class="job-head"><h3>Snowflake/ IICS Developer</h3><span class="when">Feb 2022 - May 2023</span></div><p class="where">Medline · Chicago, IL</p><ul><li>Developed and supported large-scale Snowflake warehouses using Snowpark, SnowSQL, IICS, AWS S3, Streams, Tasks, and Snowpipe.</li><li>Led Teradata-to-Snowflake Lift &amp; shift migration, converting queries and implementing staged bulk loading with COPY, PUT, GET, and LIST commands.</li><li>Built IICS and Informatica PowerCenter integrations for relational, legacy, XML, flat-file, and Kafka JSON data supporting healthcare claims, provider, drug, patient, and eligibility dimensions.</li><li>Applied Snowflake clustering, partitioning, Zero Copy Cloning, Time Travel, and validation checks while monitoring production replication and ETL workflows.</li></ul></article><article class="job"><div class="job-head"><h3>Data Engineer</h3><span class="when">Jul 2020 - Dec 2021</span></div><p class="where">Sunflower IT · Pune, IND</p><p class="project">Developed end-to-end data integration pipelines using IICS Data Integration to migrate SQL Server sources into Snowflake, designing optimized schemas and ingestion workflows that delivered reliable reporting datasets for business analytics.</p><ul><li>Migrated SQL Server data to Snowflake through IICS mappings, taskflows, SnowSQL, staging tables, and optimized schemas supporting reliable business reporting.</li><li>Optimized Snowflake queries with clustering, pruning, caching, and partitioning, reducing compute costs by ~30%.</li><li>Built Snowflake stored-procedure security alerting for unauthorized schema changes, network policy modifications, and privilege escalations.</li><li>Integrated Snowflake with Tableau and implemented logging, error handling, retries, Time Travel, and Zero-Copy Cloning for reliable pipelines and environment management.</li></ul><h4>Tools</h4><ul class="chips"><li>IICS (Data Integration, mappings, mapping tasks, taskflows, Secure Agent)</li><li>Snowflake</li><li>SQL Server</li><li>SnowSQL</li><li>Snowflake UDFs</li><li>External Tables</li><li>Data Lake</li><li>Snowflake Time Travel</li><li>Zero-Copy Cloning</li><li>Snowflake stored procedures</li><li>Tableau</li><li>SQL</li></ul></article><article class="job"><div class="job-head"><h3>Jr. ETL Developer</h3><span class="when">Jul 2019 - Jun 2020</span></div><p class="where">Vistara Informatics · Ind</p><p class="project">Designed and maintained cloud data integration pipelines in IICS, onboarding new source systems and migrating legacy feeds into the modern IICS environment to support enterprise reporting and analytics across multiple business functions.</p><ul><li>Built IICS pipelines from flat files and relational sources into Snowflake staging and warehouse tables, supporting reliable enterprise reporting loads.</li><li>Implemented Snowflake incremental loads and SCD Type 1 &amp; 2 logic, enabling historical trend analysis.</li><li>Configured IICS connections, Secure Agent environments, schedules, taskflows, and monitoring for timely batch processing.</li><li>Migrated legacy feeds and onboarded new source systems into the modern IICS environment.</li></ul><h4>Tools</h4><ul class="chips"><li>IICS (Data Integration, mappings, taskflows, Secure Agent)</li><li>Snowflake</li><li>SQL</li><li>Snowflake stored procedures</li><li>Flat Files</li><li>Relational Sources</li><li>SCD Type 1 &amp; 2</li></ul></article><article class="job"><div class="job-head"><h3>Jr. SQL Developer</h3><span class="when">Jan 2018 - Jul 2019</span></div><p class="where">Tricode Info Solutions · Ind</p><p class="project">Contributed to data backends for web and mobile applications across domains such as entertainment, banking, and fintech, building MySQL-based layers and validating data for analytics use.</p><ul><li>Developed MySQL ETL queries, tables, views, and indexes supporting web and mobile applications across entertainment, banking, and fintech.</li><li>Migrated legacy datasets into MySQL staging and reporting layers for application and analytics use.</li><li>Built cleansing and validation routines that improved downstream data accuracy.</li><li>Monitored daily loads and resolved MySQL constraint, index, and join errors.</li></ul><h4>Tools</h4><ul class="chips"><li>MySQL</li><li>SQL</li></ul></article></section><section id="certifications"><h2>Certifications</h2><ul class="certs"><li><strong>Certified Snowflake Snow-Pro certification</strong><span>Snowflake · ID S0028228</span></li><li><strong>Certified AWS Certified Cloud Practitioner</strong><span>Amazon · ID AWS04327560</span></li><li><strong>Databricks Certified Data Engineer Associate</strong><span>Databricks · ID 160297574</span></li></ul></section><section id="education"><h2>Education</h2><article class="job"><div class="job-head"><h3>Masters in business analytics</h3><span class="when">May 2023</span></div><p class="where">University of north texas · Danton, TX</p><p>GPA: 3.8/4.0</p></article><article class="job"><div class="job-head"><h3>Bachelor of Science in Mathematics, Statistics &amp; Computer Science</h3><span class="when"></span></div><p class="where">Loyola Academy Degree &amp; PG College · Alwal, TG</p></article></section></main>
-<footer>Updated October 2026</footer>
-</div>
+  <a class="skip" href="#app">Skip to content</a>
+  <div id="app"></div>
+  <noscript><p style="padding:2rem">This page needs JavaScript to show its content.</p></noscript>
+  <script type="module">
+    import { resume as r } from "./data.js";
+    import * as K from "./kit.js";
+
+    const app = K.mount(r, `
+      <nav><div class="wrap"><b>${K.esc(r.short)}</b><div>
+        <a href="#results">Results</a><a href="#projects">Projects</a><a href="#work">Experience</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
+      </div><a class="btn sm" href="#contact">Get in touch</a></div></nav>
+
+      <header class="hero"><div class="wrap">
+        <p class="pill"><i></i>${K.esc([r.title, r.location].filter(Boolean).join(" · "))}</p>
+        <h1>${K.esc(r.first)} <em>${K.esc(r.last)}</em></h1>
+        <p class="sub">${K.esc(r.pitch)}</p>
+        <div class="cta">${K.mail(r, "btn", `Email ${K.esc(r.short)}`)}<a class="btn alt" href="#work">See the experience</a></div>
+        <div class="shot rv" data-if="focus"><div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <ol class="flow">${r.focus.map(([step, what], n) => `<li style="--n:${n}"><small>${K.pad(n + 1)}</small><b>${K.esc(step)}</b><span>${K.esc(what)}</span></li>`).join("")}</ol></div>
+      </div></header>
+
+      <div class="logos wrap rv" data-if="jobs"><p>Experience at</p><ul>${[...new Set(r.jobs.map((j) => j.company))].map((c) => `<li>${K.esc(c)}</li>`).join("")}</ul></div>
+
+      <section class="wrap center" id="results"><p class="eyebrow rv">Results</p><h2 class="rv">In numbers.</h2><div class="stats">${K.stats(r)}</div></section>
+
+      <section class="wrap split" id="about">
+        <div class="rv"><p class="eyebrow">About</p><h2>About me.</h2>${K.about(r)}</div>
+        <dl class="rv">${K.facts(r)}</dl>
+      </section>
+
+      <section class="wrap center" id="projects"><p class="eyebrow rv">What I build</p><h2 class="rv">What I have built.</h2><div class="feat" style="text-align:left">${K.projects(r)}</div></section>
+      <section class="wrap" id="work"><p class="eyebrow rv">Experience</p><h2 class="rv">Where I have worked.</h2>${K.jobs(r)}</section>
+      <section class="wrap center" id="skills"><p class="eyebrow rv">Skills</p><h2 class="rv">The toolbox.</h2><div class="sks" style="text-align:left">${K.skills(r)}</div></section>
+      <section class="wrap center" id="credentials"><p class="eyebrow rv">Credentials</p><h2 class="rv">Certified and schooled.</h2><div class="creds" style="text-align:left">${K.credentials(r)}</div></section>
+
+      <section class="band" id="contact"><div class="wrap"><p class="eyebrow rv">Contact</p><h2 class="rv">Get in touch.</h2><div class="cts">${K.contact(r)}</div></div></section>`);
+
+    const nav = app.querySelector("nav");
+    K.onScroll((y) => nav.classList.toggle("stuck", y > 8));
+  </script>
 </body>
 </html>
