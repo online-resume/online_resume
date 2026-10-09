@@ -8,489 +8,103 @@
   <meta name="description" content="Professional profile of Sree Pavan Teja Pothireddy">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./base.css">
   <style>
-    :root {
-      --bg: #070c1e;
-      --bg-card: rgba(14, 22, 50, 0.7);
-      --gold: #e5b842;
-      --gold-light: #fbe28a;
-      --gold-dark: #a37c1e;
-      --gold-glow: rgba(229, 184, 66, 0.25);
-      --ink: #f8fafc;
-      --dim: #94a3b8;
-      --line: rgba(229, 184, 66, 0.22);
-      --line-strong: rgba(229, 184, 66, 0.5);
+    /* Product design: laid out like a software company's home page. What I do,
+       the results, where I have done it, then the details. */
+    :root { --bg: #fff; --ink: #0f172a; --dim: #55607a; --line: #e5e8f0; --tint: #f6f7fb; --brand: #4338ca; --brand-2: #0ea5e9; --soft: #eef0ff; --ok: #059669; }
+    body { background: var(--bg); color: var(--ink); font: 400 clamp(1rem, 0.96rem + 0.2vw, 1.1rem)/1.6 "Figtree", system-ui, sans-serif; }
+    .wrap { width: min(1160px, 100% - 2rem); margin-inline: auto; }
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 8px; }
+
+    nav { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; } nav.stuck { border-color: var(--line); }
+    nav .wrap { display: flex; align-items: center; gap: 2rem; min-height: 64px; } nav b { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; letter-spacing: -0.02em; } nav b::before { content: ""; width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+    nav div { display: flex; gap: 1.6rem; margin-right: auto; } nav div a { text-decoration: none; color: var(--dim); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; } nav div a:hover { color: var(--ink); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 1.3rem; border-radius: 10px; font-weight: 700; text-decoration: none; background: var(--brand); color: #fff; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s; white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(67, 56, 202, 0.32); } .btn.alt { background: #fff; color: var(--ink); border: 1px solid var(--line); } .btn.alt:hover { box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); } .btn.sm { min-height: 40px; padding: 0 1rem; font-size: 0.92rem; }
+
+    .hero { position: relative; text-align: center; padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4rem); overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: -40% -10% auto; height: 120%; z-index: -1; background: radial-gradient(45% 55% at 30% 40%, rgba(67, 56, 202, 0.14), transparent 70%), radial-gradient(40% 50% at 72% 30%, rgba(14, 165, 233, 0.14), transparent 70%); animation: sway 14s ease-in-out infinite alternate; } @keyframes sway { to { transform: translateX(4%) scale(1.06); } }
+    .pill { display: inline-flex; gap: 0.5rem; align-items: center; padding: 0.3rem 0.9rem; border-radius: 999px; background: var(--soft); color: var(--brand); font-weight: 600; font-size: 0.88rem; margin-bottom: 1.4rem; } .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+    h1 { font-weight: 800; font-size: clamp(2.4rem, 1.2rem + 5.4vw, 5rem); line-height: 1.03; letter-spacing: -0.045em; text-wrap: balance; max-width: 16ch; margin-inline: auto; } h1 em { font-style: normal; background: linear-gradient(100deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero > .wrap > p.sub { max-width: 58ch; margin: 1.4rem auto 0; color: var(--dim); font-size: 1.12em; } .cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* The pipeline shown as a product screenshot */
+    .shot { margin: clamp(2.5rem, 5vw, 4rem) auto 0; max-width: 960px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12); text-align: left; overflow: hidden; }
+    .shot__bar { display: flex; gap: 6px; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); background: var(--tint); } .shot__bar i { width: 10px; height: 10px; border-radius: 50%; background: #d5d9e3; }
+    .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; padding: 1.25rem; } .flow li { position: relative; padding: 0.9rem; border-radius: 12px; background: var(--tint); border: 1px solid var(--line); animation: glow 6s ease-in-out infinite; animation-delay: calc(var(--n) * 1.2s); }
+    .flow b { display: block; font-weight: 700; } .flow span { font-size: 0.86rem; color: var(--dim); line-height: 1.35; display: block; margin-top: 0.2rem; } .flow small { font-size: 0.72rem; font-weight: 700; color: var(--brand); letter-spacing: 0.08em; }
+    @keyframes glow { 0%, 20%, 100% { border-color: var(--line); box-shadow: none; background: var(--tint); } 8% { border-color: var(--brand); box-shadow: 0 8px 22px rgba(67, 56, 202, 0.2); background: #fff; } }
+
+    .logos { text-align: center; padding: clamp(2.5rem, 5vw, 4rem) 0 0; } .logos p { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+    .logos ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem 2.6rem; margin-top: 1.1rem; } .logos li { font-weight: 800; font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.45rem); letter-spacing: -0.02em; color: #9aa3b8; transition: color 0.25s, transform 0.25s; } .logos li:hover { color: var(--ink); transform: translateY(-2px); }
+
+    section { padding-top: clamp(4rem, 9vw, 7.5rem); } .center { text-align: center; }
+    .eyebrow { font-size: 0.84rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.7rem; }
+    h2 { font-weight: 800; font-size: clamp(1.9rem, 1.3rem + 2.8vw, 3.2rem); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); } .center h2 { max-width: 20ch; margin-inline: auto; }
+    h3 { font-weight: 700; font-size: 1.15rem; line-height: 1.3; letter-spacing: -0.01em; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; } .stat { padding: 1.5rem; border-radius: 16px; background: var(--tint); text-align: left; } .stat__n { font-weight: 800; font-size: clamp(2.2rem, 1.5rem + 2.6vw, 3.4rem); line-height: 1; letter-spacing: -0.045em; background: linear-gradient(120deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; } .stat__l { margin-top: 0.6rem; font-size: 0.9rem; color: var(--dim); line-height: 1.4; }
+    .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4.5rem); align-items: start; } .split p + p { margin-top: 0.9rem; color: var(--dim); } .split h2 { margin-bottom: 1rem; }
+    dl { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; } dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--line); } dl div:last-child { border: 0; } dt { color: var(--dim); } dd { font-weight: 600; text-align: right; }
+
+    .feat { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; } .proj { grid-column: span 2; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; display: flex; flex-direction: column; gap: 0.6rem; background: #fff; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s, border-color 0.3s; } .proj:nth-child(n + 4) { grid-column: span 3; }
+    .proj:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(15, 23, 42, 0.1); border-color: #c9cdf7; }
+    .proj__no { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); color: var(--brand); font-weight: 800; font-size: 0.9rem; } .proj__about { color: var(--dim); } .proj__out { font-size: 0.92rem; font-weight: 500; padding-left: 1.5rem; position: relative; } .proj__out::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 800; } .proj .chips { margin-top: auto; padding-top: 0.4rem; }
+    .chips li { font-size: 0.8rem; font-weight: 500; padding: 0.15rem 0.65rem; border-radius: 999px; background: var(--tint); color: #3a4560; } .chips .core { background: var(--soft); color: var(--brand); font-weight: 700; }
+    .job { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem; padding: 1.75rem 0; border-top: 1px solid var(--line); } .job__when { font-weight: 700; } .job__place { color: var(--dim); font-size: 0.92rem; }
+    .job__co { color: var(--brand); } .job__co::before { content: "at "; color: var(--dim); font-weight: 400; } .job__sum { color: var(--dim); margin-top: 0.3rem; } .job__pts { margin: 1rem 0 1.1rem; display: grid; gap: 0.5rem; } .job__pts li { padding-left: 1.6rem; position: relative; } .job__pts li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 800; }
+    .sks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; } .sk { padding: 1.25rem; border-radius: 16px; background: var(--tint); } .sk h3 { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.7rem; } .sk .chips li { background: #fff; }
+    .creds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; } .cred { padding: 1.4rem; border: 1px solid var(--line); border-radius: 16px; } .cred:nth-child(n + 4) { grid-column: span 1; } .cred__tag { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); } .cred h3 { margin: 0.5rem 0 0.25rem; } .cred__org { color: var(--dim); font-size: 0.92rem; } .cred__note { margin-top: 0.6rem; font-size: 0.86rem; font-weight: 600; }
+    .band { margin-top: clamp(4rem, 9vw, 7.5rem); padding: clamp(3rem, 7vw, 5.5rem) 0; background: linear-gradient(120deg, #1e1b4b, var(--brand) 60%, #0369a1); color: #fff; text-align: center; } .band h2 { max-width: 18ch; margin-inline: auto; } .band .eyebrow { color: #c7d2fe; }
+    .cts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: left; } .ct { text-decoration: none; padding: 1.3rem; border-radius: 14px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22); transition: background 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); } .ct:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-4px); } .ct span { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c7d2fe; margin-bottom: 0.3rem; } .ct strong { font-size: 1.1rem; overflow-wrap: anywhere; }
+
+    @media (max-width: 900px) {
+      nav div { display: none; } nav b { margin-right: auto; } .flow { grid-template-columns: 1fr; } .stats, .sks { grid-template-columns: repeat(2, 1fr); } .split, .job, .creds, .cts { grid-template-columns: 1fr; } .job { gap: 0.5rem; } .job__head { display: flex; gap: 0.8rem; align-items: baseline; } .proj:nth-child(n) { grid-column: span 6; }
     }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font: 400 clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem)/1.65 "Plus Jakarta Sans", sans-serif;
-      overflow-x: hidden;
-      position: relative;
-    }
-    #sparkles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.7;
-    }
-    .wrap {
-      width: min(1180px, 100% - 2.5rem);
-      margin-inline: auto;
-      position: relative;
-      z-index: 1;
-    }
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(7, 12, 30, 0.85);
-      border-bottom: 1px solid var(--line);
-    }
-    nav .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 64px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: "Cinzel", serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.08em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-    }
-    .crown {
-      width: 24px;
-      height: 24px;
-      fill: var(--gold);
-      filter: drop-shadow(0 0 8px var(--gold-glow));
-    }
-    nav .links {
-      display: flex;
-      gap: 1.6rem;
-    }
-    nav a {
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--dim);
-      transition: color 0.25s, text-shadow 0.25s;
-    }
-    nav a:hover {
-      color: var(--gold);
-      text-shadow: 0 0 10px var(--gold-glow);
-    }
-    .hero {
-      padding: clamp(4rem, 9vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
-      text-align: center;
-    }
-    .regal-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 1.1rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(229, 184, 66, 0.08);
-      font-family: "Cinzel", serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 20px var(--gold-glow);
-    }
-    h1 {
-      font-family: "Cinzel", serif;
-      font-weight: 900;
-      font-size: clamp(2.8rem, 1.8rem + 5vw, 6rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 25%, var(--gold-light) 60%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-    }
-    .lead {
-      font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
-      color: var(--dim);
-      max-width: 65ch;
-      margin: 0 auto 2rem;
-    }
-    .hero-cta {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .btn-gold {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.8rem;
-      border-radius: 8px;
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      color: #070c1e;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(229, 184, 66, 0.4);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(229, 184, 66, 0.6);
-    }
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.85rem 1.8rem;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(14, 22, 50, 0.5);
-      color: var(--gold-light);
-      font-family: "Cinzel", serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      background: rgba(229, 184, 66, 0.12);
-    }
-    section {
-      padding: clamp(3.5rem, 6vw, 6rem) 0;
-    }
-    .sec-head {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-    .sec-head::after {
-      content: "";
-      display: block;
-      width: 70px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 1rem auto 0;
-    }
-    .sec-head p {
-      font-family: "Cinzel", serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .sec-head h2 {
-      font-family: "Cinzel", serif;
-      font-size: clamp(1.8rem, 1.4rem + 2vw, 3rem);
-      font-weight: 800;
-      color: #fff;
-    }
-    .royal-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: clamp(1.4rem, 2.5vw, 2.2rem);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-    .royal-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-      box-shadow: 0 16px 40px var(--gold-glow);
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .stat-box {
-      text-align: center;
-      padding: 1.8rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(14, 22, 50, 0.5);
-    }
-    .stat-n {
-      font-family: "Cinzel", serif;
-      font-weight: 900;
-      font-size: clamp(2.4rem, 1.8rem + 2vw, 3.8rem);
-      color: var(--gold-light);
-      line-height: 1;
-    }
-    .stat-l {
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--dim);
-      margin-top: 0.6rem;
-    }
-    .timeline {
-      display: grid;
-      gap: 2rem;
-    }
-    .job-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.8rem;
-    }
-    .job-title {
-      font-family: "Cinzel", serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--gold-light);
-    }
-    .job-company {
-      color: #fff;
-      font-weight: 600;
-    }
-    .job-date {
-      color: var(--gold);
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    .job-pts {
-      margin: 1rem 0;
-      display: grid;
-      gap: 0.6rem;
-      color: #cbd5e1;
-    }
-    .job-pts li {
-      position: relative;
-      padding-left: 1.5rem;
-    }
-    .job-pts li::before {
-      content: "◆";
-      position: absolute;
-      left: 0;
-      top: 0.1em;
-      color: var(--gold);
-      font-size: 0.75rem;
-    }
-    .chips-gold {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .chips-gold li, .chips-gold span {
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.25rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(229, 184, 66, 0.06);
-      color: var(--gold-light);
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.8rem;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .foot {
-      border-top: 1px solid var(--line);
-      margin-top: 4rem;
-      padding: 2rem 0;
-      color: var(--dim);
-      font-size: 0.88rem;
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      nav .links { display: none; }
-    }
+    @media (max-width: 520px) { .sks { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <a class="skip" href="#app">Skip to content</a>
-  <canvas id="sparkles"></canvas>
   <div id="app"></div>
-  <noscript><p style="padding:2rem">This royal page requires JavaScript.</p></noscript>
+  <noscript><p style="padding:2rem">This page needs JavaScript to show its content.</p></noscript>
   <script type="module">
     import { resume as r } from "./data.js";
     import * as K from "./kit.js";
 
-    // Animated gold sparkles canvas
-    const cvs = document.getElementById("sparkles");
-    const ctx = cvs.getContext("2d");
-    let w, h, pts = [];
-    function resize() {
-      w = cvs.width = window.innerWidth;
-      h = cvs.height = window.innerHeight;
-      pts = Array.from({ length: 45 }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: Math.random() * 2 + 0.5,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.5 - 0.2,
-        a: Math.random()
-      }));
-    }
-    resize();
-    window.addEventListener("resize", resize);
-    function loop() {
-      ctx.clearRect(0, 0, w, h);
-      for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.y < 0) p.y = h;
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(229, 184, 66, ${p.a * 0.6})`;
-        ctx.fill();
-      }
-      requestAnimationFrame(loop);
-    }
-    loop();
-
     const app = K.mount(r, `
-      <nav>
-        <div class="wrap">
-          <div class="brand">
-            <svg class="crown" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg>
-            <span>${K.esc(r.short)} ${K.esc(r.last)}</span>
-          </div>
-          <div class="links">
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#credentials">Credentials</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </div>
-      </nav>
+      <nav><div class="wrap"><b>${K.esc(r.short)}</b><div>
+        <a href="#results">Results</a><a href="#projects">Projects</a><a href="#work">Experience</a><a href="#skills">Skills</a><a href="#credentials">Credentials</a>
+      </div><a class="btn sm" href="#contact">Get in touch</a></div></nav>
 
-      <header class="hero wrap">
-        <div class="regal-badge">Imperial Portfolio · ${K.esc(r.title)}</div>
-        <h1>${K.esc(r.name)}</h1>
-        <p class="lead">${K.esc(r.pitch)}</p>
-        <div class="hero-cta">
-          <a class="btn-gold" href="#experience">View Kingdom Works</a>
-          ${K.mail(r, "btn-outline", "Royal Audience")}
-        </div>
-        <div class="stats-grid" data-if="stats">
-          ${r.stats.map(s => `
-            <div class="stat-box rv">
-              <div class="stat-n">${s.pre}<span data-count="${s.n}">${s.n}</span>${K.esc(s.suf)}</div>
-              <div class="stat-l">${K.esc(s.label)}</div>
-            </div>`).join("")}
-        </div>
-      </header>
+      <header class="hero"><div class="wrap">
+        <p class="pill"><i></i>${K.esc([r.title, r.location].filter(Boolean).join(" · "))}</p>
+        <h1>${K.esc(r.first)} <em>${K.esc(r.last)}</em></h1>
+        <p class="sub">${K.esc(r.pitch)}</p>
+        <div class="cta">${K.mail(r, "btn", `Email ${K.esc(r.short)}`)}<a class="btn alt" href="#work">See the experience</a></div>
+        <div class="shot rv" data-if="focus"><div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <ol class="flow">${r.focus.map(([step, what], n) => `<li style="--n:${n}"><small>${K.pad(n + 1)}</small><b>${K.esc(step)}</b><span>${K.esc(what)}</span></li>`).join("")}</ol></div>
+      </div></header>
 
-      <section class="wrap" id="about">
-        <div class="sec-head"><p>Pinnacle Pedigree</p><h2>Royal Chronicle</h2></div>
-        <div class="royal-card rv">
-          ${K.about(r)}
-          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 1.5rem;">
-            ${r.facts.map(([k, v]) => `<div><span style="color:var(--gold); font-size:0.8rem; text-transform:uppercase;">${K.esc(k)}</span>: <strong>${K.esc(v)}</strong></div>`).join("")}
-          </div>
-        </div>
+      <div class="logos wrap rv" data-if="jobs"><p>Experience at</p><ul>${[...new Set(r.jobs.map((j) => j.company))].map((c) => `<li>${K.esc(c)}</li>`).join("")}</ul></div>
+
+      <section class="wrap center" id="results"><p class="eyebrow rv">Results</p><h2 class="rv">In numbers.</h2><div class="stats">${K.stats(r)}</div></section>
+
+      <section class="wrap split" id="about">
+        <div class="rv"><p class="eyebrow">About</p><h2>About me.</h2>${K.about(r)}</div>
+        <dl class="rv">${K.facts(r)}</dl>
       </section>
 
-      <section class="wrap" id="experience">
-        <div class="sec-head"><p>Distinguished Command</p><h2>Career Reign</h2></div>
-        <div class="timeline">
-          ${r.jobs.map(j => `
-            <article class="royal-card rv">
-              <div class="job-head">
-                <div>
-                  <div class="job-title">${K.esc(j.title || j.company)}</div>
-                  <div class="job-company">${K.esc(j.company)} · ${K.esc(j.place)}</div>
-                </div>
-                <div class="job-date">${K.esc(j.when)}</div>
-              </div>
-              ${j.summary ? `<p style="color:var(--dim); font-style:italic;">${K.esc(j.summary)}</p>` : ""}
-              ${j.points.length ? `<ul class="job-pts">${j.points.map(p => `<li>${K.esc(p)}</li>`).join("")}</ul>` : ""}
-              ${j.tools.length ? `<ul class="chips-gold">${j.tools.map(t => `<li>${K.esc(t)}</li>`).join("")}</ul>` : ""}
-            </article>`).join("")}
-        </div>
-      </section>
+      <section class="wrap center" id="projects"><p class="eyebrow rv">What I build</p><h2 class="rv">What I have built.</h2><div class="feat" style="text-align:left">${K.projects(r)}</div></section>
+      <section class="wrap" id="work"><p class="eyebrow rv">Experience</p><h2 class="rv">Where I have worked.</h2>${K.jobs(r)}</section>
+      <section class="wrap center" id="skills"><p class="eyebrow rv">Skills</p><h2 class="rv">The toolbox.</h2><div class="sks" style="text-align:left">${K.skills(r)}</div></section>
+      <section class="wrap center" id="credentials"><p class="eyebrow rv">Credentials</p><h2 class="rv">Certified and schooled.</h2><div class="creds" style="text-align:left">${K.credentials(r)}</div></section>
 
-      <section class="wrap" id="projects">
-        <div class="sec-head"><p>Imperial Endeavors</p><h2>Signature Deliverables</h2></div>
-        <div class="grid-2">
-          ${r.projects.map((p, i) => `
-            <article class="royal-card rv">
-              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom:0.6rem;">
-                <h3 style="font-family:'Cinzel',serif; font-size:1.25rem; color:var(--gold-light); margin:0;">${K.esc(p.name)}</h3>
-                ${p.url ? `<a href="${K.esc(p.url)}" target="_blank" rel="noopener" style="color:var(--gold); font-size:0.82rem; font-weight:700; text-decoration:none; white-space:nowrap; border:1px solid var(--gold); padding:0.25rem 0.65rem; border-radius:999px;">Case Study ↗</a>` : ""}
-              </div>
-              ${p.about ? `<p style="color:var(--dim); margin:0.6rem 0 0.8rem; line-height:1.6;">${K.esc(p.about)}</p>` : ""}
-              ${p.outcome ? `<div style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.8rem; border-radius:6px; background:rgba(229,184,66,0.12); border:1px solid rgba(229,184,66,0.3); color:var(--gold-light); font-weight:700; font-size:0.82rem; margin-bottom:0.9rem;"><span>✦ IMPACT:</span> <span>${K.esc(p.outcome)}</span></div>` : ""}
-              ${p.tools.length ? `<ul class="chips-gold" style="margin-top:0.4rem;">${p.tools.map(t => `<li>${K.esc(t)}</li>`).join("")}</ul>` : ""}
-            </article>`).join("")}
-        </div>
-      </section>
+      <section class="band" id="contact"><div class="wrap"><p class="eyebrow rv">Contact</p><h2 class="rv">Get in touch.</h2><div class="cts">${K.contact(r)}</div></div></section>`);
 
-      <section class="wrap" id="skills">
-        <div class="sec-head"><p>Mastery of Guilds</p><h2>Core Proficiencies</h2></div>
-        <div class="grid-3">
-          ${r.skills.map(g => `
-            <div class="royal-card rv">
-              <h3 style="font-family:'Cinzel',serif; font-size:1.05rem; color:var(--gold-light); margin-bottom:0.9rem;">${K.esc(g.group)}</h3>
-              <ul class="chips-gold">
-                ${g.items.map(([name, core]) => `<li style="${core ? 'border-color:var(--gold); color:#fff; background:rgba(229,184,66,0.18);' : ''}">${K.esc(name)}</li>`).join("")}
-              </ul>
-            </div>`).join("")}
-        </div>
-      </section>
-
-      <section class="wrap" id="credentials">
-        <div class="sec-head"><p>Royal Accreditations</p><h2>Honors & Academics</h2></div>
-        <div class="grid-3">
-          ${r.credentials.map(c => `
-            <article class="royal-card rv">
-              <span style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold);">${K.esc(c.tag)}</span>
-              <h3 style="margin:0.4rem 0; font-size:1.1rem; color:#fff;">${K.esc(c.name)}</h3>
-              ${c.org ? `<p style="color:var(--dim); font-size:0.9rem;">${K.esc(c.org)}</p>` : ""}
-              ${c.note ? `<p style="color:var(--gold-light); font-size:0.85rem; margin-top:0.4rem;">${K.esc(c.note)}</p>` : ""}
-            </article>`).join("")}
-        </div>
-      </section>
-
-      <section class="wrap" id="contact">
-        <div class="sec-head"><p>Direct Inquiries</p><h2>Dispatch Royal Envoy</h2></div>
-        <div class="grid-3">
-          ${r.contacts.map(c => `
-            <div class="royal-card rv" style="text-align:center;">
-              <span style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--gold);">${K.esc(c.label)}</span>
-              <div style="margin-top:0.6rem; font-size:1.1rem; font-weight:700;">
-                ${c.href ? `<a href="${K.esc(c.href)}" style="color:#fff; text-decoration:none;">${K.esc(c.text)} ↗</a>` : `<span>${K.esc(c.text)}</span>`}
-              </div>
-            </div>`).join("")}
-        </div>
-      </section>
-    `);
+    const nav = app.querySelector("nav");
+    K.onScroll((y) => nav.classList.toggle("stuck", y > 8));
   </script>
 </body>
 </html>
